@@ -1,74 +1,138 @@
-<!--
-  iFrame Component for HapYak
-  bobaks@google.com
 
-  Listens for data from the HapYak user login form, stores it in variables
-  Generates a pop-up window with data from the variables
-  The HTML for the pop-up is embedded in the script, through it could also be linked
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>      
 
--->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>     
+  </head>
+<body>
 
+<div class="container">
+	<div class="row">
+		<div class="col m4">
 
-
-<!doctype html>
-<html>
-	<head>
-		<title></title>
-		<meta charset="utf-8"/>
-		<style type="text/css">
-			html, body { margin: 0; padding: 0 }
-		</style>
-	</head>
-	<body>
-		<!-- BEGIN: iFrame's HTML code -->
-
-		<!-- This example has a button that runs the function openNewWindow() -->
-		<button onclick="openNewWindow();">Generate Certificate</button>
-
-		<!-- END: iFrame's HTML code -->
+			<h3>Example 1: Set a "score" variable</h3>			
+			<form action="#">
+				<p class="range-field">
+					<input type="range" id="example_1" min="0" max="100" />
+				</p>
+			</form>
 
 
-		<script type="text/javascript" src="//d2qrdklrsxowl2.cloudfront.net/js/hapyak-iframe.js"></script>
-		<script type="text/javascript" src="//d2qrdklrsxowl2.cloudfront.net/js/hapyak.api.js"></script>
+			<h3>Example 2: Set string variables</h3>			
+			 <div class="row">
+			    <form class="col s12">
+			      <div class="row">
+			        <div class="input-field col s6">
+			          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+			          <label for="first_name">First Name</label>
+			        </div>
+			        <div class="input-field col s6">
+			          <input id="last_name" type="text" class="validate">
+			          <label for="last_name">Last Name</label>
+			        </div>
+			      </div>
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <input id="email" type="email" class="validate">
+			          <label for="email">Email</label>
+			        </div>
+			      </div>
+			    </form>
+			  </div>	
+
+			<h3>Example 3: Set JSON variables</h3>			
+			  <div class="row">
+			    <form class="col s12" onsubmit="return false;">
+			      <div class="row">
+			        <div class="input-field col s12">
+			          <textarea id="json" class="materialize-textarea">
+{
+	"product_name": "pie",
+	"region": {
+		"caribbean": {
+			"rate": "5",
+			"currency": "usd"
+		}
+	}
+}
+			          </textarea>
+			          <button id="setJSON">SET</button>
+			          <label for="textarea1">JSON</label>
+			        </div>
+			      </div>
+			    </form>
+			  </div>
 
 
-		<!-- BEGIN: Custom JavaScript -->
-		<script type="text/javascript">
-
-			// Global Variables
-			var userName, userId, email;
-
-			// This function will open a new window. Called from the HTML button above
-			function openNewWindow() {
-				var popupWindow = window.open("", "MsgWindow", "width=800,height=600");
-				var popupHTML = `<p>Congratulations ${userName}!!</p> \
-					<p>Here is your certificate.</p> \
-					<p>The end.</p>`;
-
-					popupWindow.document.write(popupHTML);
-				}
+		</div>
+		<div class="col m8">
+			
+			<h3>CLASSIC</h3>
+<video id="hapyak-player-157199-8825" controls class="video-js vjs-default-skin" width="720" height="405" playsinline="playsinline">
+    <source src="https://sample.hapyak-hosted.com/group_uploads/23/16673/videos/862f7e32a9b94974b98f004ae49fa9ef/Sample-Video-with-sound.mp4" type="video/mp4"/>
+</video>
+<link rel="stylesheet" href="//vjs.zencdn.net/4.8/video-js.css">
+<script type="text/javascript" src="//vjs.zencdn.net/4.8/video.js"></script>
+<script type="text/javascript" src="//d2qrdklrsxowl2.cloudfront.net/js/hapyak.js"></script>
 
 
-			// BEGIN: HapYak event listener code
-			(function () {
-				hapyak.context.addEventListener('data', function (variables) {
-        			if (variables._hapyakTrackingUserEmail) {
-						email =  variables._hapyakTrackingUserEmail;
-       			 	}
-        			if (variables._hapyakTrackingUser) {
-             			userId = variables._hapyakTrackingUser;
-        		   	}
-        			if (variables._hapyakTrackingUserName) {
-             		   	userName = variables._hapyakTrackingUserName;
-        			}
+			<h3>L10N</h3>
+			<!-- 
+<script src="https://viewer.hapyak.com/v1/embed.js"></script>
+<hapyak-embed src="locator://c=12803;g=24641;p=4ea37901-48d2-4211-bc6c-b9ef8e750b50" lang="en" text-location="overlay" playButton="false" captions="false" loop="false" autoplay="false" start="0" seo presentation="inline">
+    <variable name="name">Kyle</variable>
+</hapyak-embed>
+			-->
 
-        			console.log("iframe data", variables);
-   				});
-			}());
-			// END: HapYak event listener code
+			
 
-		</script>
+		</div>
+	</div>
+</div>
 
-	<!-- END: Custom JavaScript -->
-	</body>
+
+</body>
+<script type="text/javascript">
+$(window).ready(function() {
+
+	//init example components
+	$('select').formSelect();
+
+	/* Example 1: When the slider changes we base the current value to the viewer */
+	$('#example_1').on("change",function() { window.hapyakClassicInstance.setData("score",$('#example_1').val() ) });
+
+	/* Example 2: When the form values are updated, set them as variables */
+	$('#first_name').on("change",function() { window.hapyakClassicInstance.setData("first_name",$('#first_name').val() ) });
+	$('#last_name').on("change",function() { window.hapyakClassicInstance.setData("last_name",$('#last_name').val() ) });
+	$('#email').on("change",function() { window.hapyakClassicInstance.setData("email",$('#email').val() ) });
+
+	/* Example 3: Set the JSON as a variable */
+	$('#setJSON').on("click",function() { window.hapyakClassicInstance.setData("product", JSON.parse( $("#json").val() )  ) });
+
+
+	//get instance of HapyakViewer
+    var vjs = videojs('hapyak-player-157199-8825');
+    hapyak.viewer({
+		apiKey: "d47fa4d2ed814d858e30",
+		projectId: 391042,
+		resetVariables: true,
+		player: vjs,
+		videoType: "html5",
+		playerType: "videojs4",
+		autoplay: false,
+		plugins: { cdn: { api: { enabled: false } } }, /* Turn off caching while testing */
+		onload: function(viewer) { /* Get a reference to the HapYakViewer Object and set it on the window for convenience */
+	        window.hapyakClassicInstance = viewer;
+	    }
+    });
+
+})
+
+
+</script>
 </html>
