@@ -29,9 +29,9 @@ $(window).ready(function() {
 	
 	
 	/* Example 4: Change player size */
-	$('#mini').on("click",function() { window.hapyakClassicInstance.resize(136,102) });
-	$('#max').on("click",function() { window.hapyakClassicInstance.resize(720,540) });
-	$('#excessive').on("click",function() { window.hapyakClassicInstance.resize(1440,1080) });
+	$('#mini').on("click",function() { window.hapyakClassicInstance.resize("136","102") });
+	$('#max').on("click",function() { window.hapyakClassicInstance.resize("720","540") });
+	$('#excessive').on("click",function() { window.hapyakClassicInstance.resize("1440","1080") });
 
 	
 	//get instance of HapyakViewer
@@ -42,8 +42,8 @@ $(window).ready(function() {
 		projectId: 390557,
 		controls: true,
 		resetVariables: true,
-		height: '390',
-  	  	width: '640',
+		height: '540',
+  	  	width: '720',
 		player: vjs,
 		videoType: "html5",
 		playerType: "videojs4",
