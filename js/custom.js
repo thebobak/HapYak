@@ -6,8 +6,9 @@ $(window).ready(function() {
 	/* Example 1: Set a value of a variable in a video overlay */
 	$('#name').on("change",function() { window.hapyakClassicInstance.setData("name",$('#name').val() ) });
 	
-	/* Example 2: Play the video */
+	/* Example 2: Control the video */
 	$('#play').on("click",function() { window.hapyakClassicInstance.play() });
+	$('#pause').on("click",function() { window.hapyakClassicInstance.pause() });
 	
 	/* Example 3: Toggle an annotation */
 	var overlayrule = true;
@@ -45,7 +46,7 @@ $(window).ready(function() {
 	    },
 		variables: {
 		        courseName: "Rick 101",
-				overlaytoggle: true
+				overlaytoggle: false
 		    }
 	});
 	
