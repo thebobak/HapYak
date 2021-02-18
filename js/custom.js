@@ -6,7 +6,20 @@ $(window).ready(function() {
 	/* Example 1: Set a value of a variable in a video overlay */
 	$('#name').on("change",function() { window.hapyakClassicInstance.setData("name",$('#name').val() ) });
 	
+	/* Example 2: Play the video */
 	$('#play').on("click",function() { window.hapyakClassicInstance.play() });
+	
+	/* Example 3: Toggle an annotation */
+	var overlay = true;
+	$('#overlay').on("click",function() { 
+		if (overlay === true) {
+			overlay = false;
+		}
+		else {
+			overlay = true;
+		}
+		
+	});
 
 	
 	//get instance of HapyakViewer
