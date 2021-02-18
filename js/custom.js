@@ -10,13 +10,16 @@ $(window).ready(function() {
 	$('#play').on("click",function() { window.hapyakClassicInstance.play() });
 	
 	/* Example 3: Toggle an annotation */
-	var overlay = true;
+	var overlayrule = true;
 	$('#overlay').on("click",function() { 
-		if (overlay === true) {
-			overlay = false;
+		console.log("toggle overlay clicked");
+		if (overlayrule === true) {
+			overlayrule = false;
+			console.log("overlayrule state: " + overlayrule);
 		}
 		else {
-			overlay = true;
+			overlayrule = true;
+			console.log("overlayrule state: " + overlayrule);
 		}
 		
 	});
