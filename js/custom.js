@@ -6,7 +6,7 @@ $(window).ready(function() {
 	/* Example 1: Set a value of a variable in a video overlay */
 	$('#name').on("change",function() { window.hapyakClassicInstance.setData("name",$('#name').val() ) });
 	
-	$('button#play').on("click",function() { window.hapyakClassicInstance.play() ) });
+	$('#play').on("click",function() { window.hapyakClassicInstance.play() ) });
 
 	
 	//get instance of HapyakViewer
