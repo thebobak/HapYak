@@ -15,10 +15,12 @@ $(window).ready(function() {
 		console.log("toggle overlay clicked");
 		if (overlayrule === true) {
 			overlayrule = false;
+			window.hapyakClassicInstance.setData("overlaytoggle", false);
 			console.log("overlayrule state: " + overlayrule);
 		}
 		else {
 			overlayrule = true;
+			window.hapyakClassicInstance.setData("overlaytoggle", true);
 			console.log("overlayrule state: " + overlayrule);
 		}
 		
@@ -40,7 +42,11 @@ $(window).ready(function() {
 		plugins: { cdn: { api: { enabled: false } } }, /* Turn off caching while testing */
 		onload: function(viewer) { /* Get a reference to the HapYakViewer Object and set it on the window for convenience */
 	        window.hapyakClassicInstance = viewer;
-	    }
+	    },
+		variables: {
+		        courseName: "Rick 101",
+				overlaytoggle: true
+		    }
 	});
 	
 });
