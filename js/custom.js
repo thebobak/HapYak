@@ -1,15 +1,28 @@
-(function() {
-	var vjs = videojs('hapyak-player-157199-8825');
+$(window).ready(function() {
 
+	//init example components
+	$('select').formSelect();
+
+	/* Example 1: Set a value of a variable in a video overlay */
+	$('#name').on("change",function() { window.hapyakClassicInstance.setData("name",$('#name').val() ) });
+
+
+	//get instance of HapyakViewer
+	
+	var vjs = videojs('hapyak-player-157199-8825');
 	hapyak.viewer({
 		apiKey: "4c5b39201f724da898f5",
 		projectId: 390557,
 		controls: true,
 		resetVariables: true,
-
 		player: vjs,
 		videoType: "html5",
 		playerType: "videojs4",
-		autoplay: false
+		autoplay: false,
+		plugins: { cdn: { api: { enabled: false } } }, /* Turn off caching while testing */
+		onload: function(viewer) { /* Get a reference to the HapYakViewer Object and set it on the window for convenience */
+	        window.hapyakClassicInstance = viewer;
+	    }
 	});
-})();
+	
+});
