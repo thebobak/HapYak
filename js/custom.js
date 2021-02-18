@@ -42,6 +42,8 @@ $(window).ready(function() {
 		projectId: 390557,
 		controls: true,
 		resetVariables: true,
+		height: '390',
+  	  	width: '640',
 		player: vjs,
 		videoType: "html5",
 		playerType: "videojs4",
