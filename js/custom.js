@@ -49,10 +49,10 @@ $(window).ready(function() {
 		console.log("Mini clicked");
 	 });
 	$('#max').on("click",function() { window.hapyakClassicInstance.resize(720,540);
-		 console.log("Mini clicked");
+		 console.log("max clicked");
 	 });
 	$('#excessive').on("click",function() { window.hapyakClassicInstance.resize(1440,1080);
-		 console.log("Mini clicked");
+		 console.log("excessive clicked");
 	 });
 
 	
