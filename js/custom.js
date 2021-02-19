@@ -27,6 +27,22 @@ $(window).ready(function() {
 		
 	});
 	
+	var chords = true;
+	$('#chords').on("click",function() { 
+		console.log("chords overlay clicked");
+		if (chords === true) {
+			chords = false;
+			window.hapyakClassicInstance.setData("chords", false);
+			console.log("chords state: " + chords);
+		}
+		else {
+			chords = true;
+			window.hapyakClassicInstance.setData("chords", true);
+			console.log("chords state: " + chords);
+		}
+		
+	});
+	
 	
 	/* Example 4: Change player size */
 	$('#mini').on("click",function() { window.hapyakClassicInstance.resize("136","102") });
@@ -54,7 +70,8 @@ $(window).ready(function() {
 	    },
 		variables: {
 		        courseName: "Rick 101",
-				overlaytoggle: false
+				overlaytoggle: true,
+				chords: true
 		    }
 	});
 	
