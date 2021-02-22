@@ -54,6 +54,12 @@ $(window).ready(function() {
 	$('#excessive').on("click",function() { window.hapyakClassicInstance.resize(1440,1080);
 		 console.log("excessive clicked");
 	 });
+	 
+	 
+	 /* Example 5: Jump ahead */
+ 	$('#jump').on("click",function() { window.hapyakClassicInstance.currentTime = 90;
+ 		console.log("Jump clicked");
+ 	 });
 
 	
 	//get instance of HapyakViewer
