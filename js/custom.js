@@ -91,7 +91,7 @@ $(window).ready(function() {
 				chords: true,
 				pressMe: function() {
 					$('#messageArea').text("Message triggered from video");
-				};
+				}
 		    }
 	});
 	
