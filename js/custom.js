@@ -64,9 +64,7 @@ $(window).ready(function() {
 	 
 	 /* Example 6: Button in video controls text on parent page */
 	 
-	 function pressMe() {
-		 $('#messageArea').text("Message triggered from video");
-	 }
+
 
 	
 	//get instance of HapyakViewer
@@ -90,7 +88,10 @@ $(window).ready(function() {
 		variables: {
 		        courseName: "Rick 101",
 				overlaytoggle: true,
-				chords: true
+				chords: true,
+				pressMe: function() {
+					$('#messageArea').text("Message triggered from video");
+				};
 		    }
 	});
 	
