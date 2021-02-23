@@ -60,6 +60,13 @@ $(window).ready(function() {
  	$('#jump').on("click",function() { window.hapyakClassicInstance.currentTime = 90;
  		console.log("Jump clicked");
  	 });
+	 
+	 
+	 /* Example 6: Button in video controls text on parent page */
+	 
+	 function pressMe() {
+		 $('#messageArea').text("Message triggered from video");
+	 }
 
 	
 	//get instance of HapyakViewer
