@@ -56,7 +56,7 @@ $(window).ready(function() {
 	 });
 	 
 	 
-	 /* Example 5: Jump ahead */
+	 /* Example 5: Jump to specific time */
  	$('#jump').on("click",function() { window.hapyakClassicInstance.currentTime = 90;
  		console.log("Jump clicked");
  	 });
@@ -64,7 +64,7 @@ $(window).ready(function() {
 	 
 	 /* Example 6: Button in video controls text on parent page */
 	 hapyak.message.addEventListener("message-update", function (e) {
-	     $('#messageArea2').text("Messge triggered via hapyak messages" + e.data.color);
+	     $('#messageArea2').text("Messge triggered via hapyak messages " + e.data.color);
 	   });
 
 
