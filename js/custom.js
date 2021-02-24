@@ -64,7 +64,7 @@ $(window).ready(function() {
 	 
 	 /* Example 6: Button in video controls text on parent page */
 	 hapyak.message.addEventListener("message-update", function (e) {
-	     $('#messageArea2').text("Messge triggered via hapyak messages " + e.data.color);
+	     $('#messageArea2').text("Messge triggered via hapyak messages " + e.data.color + " / " + e.data.time);
 	   });
 
 
