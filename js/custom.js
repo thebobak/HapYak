@@ -67,7 +67,16 @@ $(window).ready(function() {
 	     $('#messageArea2').text("Messge triggered via hapyak messages " + e.data.color);
 	   });
 
-
+	 
+	 /* Example 7: Switch */
+	   
+	   $('#switch').change( function() {
+		   console.log("HapYak var toggleSwitch was: " + window.hapyakClassicInstance.getData("toggleSwitch"));
+		   console.log("Toggle switch is now " + $("#switch").prop("checked"));
+		   window.hapyakClassicInstance.setData("toggleSwitch", $("#switch").prop("checked"));
+		   console.log("HapYak var toggleSwitch is now: " + window.hapyakClassicInstance.getData("toggleSwitch"));
+   	});
+	   
 	
 	//get instance of HapyakViewer
 	
@@ -93,7 +102,8 @@ $(window).ready(function() {
 				chords: true,
 				pressMe: function() {
 					$('#messageArea').text("Message triggered from video");
-				}
+				},
+				toggleSwitch: true
 		    }
 	});
 	
