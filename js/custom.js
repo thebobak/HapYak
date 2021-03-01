@@ -76,6 +76,12 @@ $(window).ready(function() {
 		   window.hapyakClassicInstance.setData("toggleSwitch", $("#switch").prop("checked"));
 		   console.log("HapYak var toggleSwitch is now: " + window.hapyakClassicInstance.getData("toggleSwitch"));
    	});
+	
+	
+ /* Example 6: Button in video controls text on parent page */
+ hapyak.message.addEventListener("bg-color", function (e) {
+     $('body').css("background-color", "olive");
+   });
 	   
 	
 	//get instance of HapyakViewer
