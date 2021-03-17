@@ -6,76 +6,109 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>      
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>     
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		
+		<style>
+			p {
+				color: #888;
+				font-size: .8em;
+			}
+			hr { border:2px solid black;}
+			h2 {
+				font-size: 1.5em;
+				font-weight: bold;
+			}
+			
+			.container {
+				margin:20px;
+				width: 100%;
+			}
+		
+			</style>
 	</head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col s12">
-				<h1>HapYak API: Variables Demo</h1>
+				<h1>HapYak API Exploration/Demo</h1>
+				<p>This page demonstrates various advanced HapYak features, including variables and interaction with the <a href="http://hapyak.com/docs" target="_blank">API</a>. All of the JavaScript is contained in the file <a href="js/custom.js" target="_blank">custom.js</a></p>
+				<p>This demo uses <a href="http://https://jquery.com" target="_blank">jQuery</a> for easier DOM interaction and <a href="https://materializecss.com" target="_blank">materialize</a> for some css components and JS functionality.
+				<div class="divider"></div>
+				<p>Created by <a href="mailto:bobaks@google.com" target="_blank">bobaks@google.com</a> | <a href="https://www.hapyak.com/portal/projects/395337" target="_blank">HapYak Project link</a></p>
 			</div>
 		</div>
+	
+	
 		<div class="row">
 		      <div class="col s4">
-				  <p>
-		          <input placeholder="Type your name" id="name" type="text" class="validate">
-		          <label for="name">Name</label>
-			  </p>
-				  <hr>
+					  <h2>Example 1: Set a variable in the HapYak viewer</h2>
+					  <p>In this example, the text entered below is passed to the HapYak viewer and stored in the variable <em>name</em>. This value can then be used in an annotation or a display rule. In this example, once the variable is set, it is used in an annotation. Several annotations have their display rules to be set only if this value exists (otherwise, the annotations are hidden).
+					  <p>
+			          <input placeholder="Type your name" id="name" type="text" class="validate">
+			          <label for="name">Name</label>
+				  </p>
+					  <hr>
+				  
+				  <h2>Example 2: Control the video</h2>
+				  <p>This example uses several methods/properties to control the video:</p>
 			  	<p>
-			  	  <button id="play" class="waves-effect waves-light btn">Press to play</button>
+			  	  <button id="play" class="waves-effect waves-light btn">Press to play</button> uses .play()
 			  </p><p>
-				  <button id="pause" class="waves-effect waves-light btn">Please make it stop!!!!</button>
+				  <button id="pause" class="waves-effect waves-light btn">Please make it stop!!!!</button> uses .pause()
 		  		</p>
     			  <p>
-    			  	<button id="jump" class="waves-effect waves-light btn">Go to t=90s</button>
+    			  	<button id="jump" class="waves-effect waves-light btn">Go to t=90s</button> uses .currentTime
     		  		</p>
 			  <hr>
+			  <h2>Example 3: Display Rules</h2>
+			  <p>These examples use boolean variables in conjunction with Display Rules in various HapYak annotations. The variables are initialized in the hapyak.viewer() section and then referenced in the HapYak annotations.</p>
 			  <p>
-			  	<button id="overlay" class="waves-effect waves-light btn">Togglee Overlays</button>
+			  	<button id="lyricsButton" class="waves-effect waves-light btn">Togglee Lyrics</button> lyricsOverlay
 		  		</p>
-				<hr>
   			  <p>
-  			  	<button id="chords" class="waves-effect waves-light btn">Toggle Chords</button>
+  			  	<button id="chordsButton" class="waves-effect waves-light btn">Toggle Chords</button> chordsOverlay
   		  		</p>
-				<hr>
-  			  <p>
-				  <!-- <strong>** NOT WORKING **</strong>
-  			  	<button id="mini" class="waves-effect waves-light btn">Minify!</button><button id="max" class="waves-effect waves-light btn">Normal Size</button><button id="excessive" class="waves-effect waves-light btn">Excessive!</button>
-  		  		</p> -->
-				
+  			  <p>Toggle the pop-up notes area</p>
 			    <!-- Switch -->
-				<h4>Toggle Swtich to control overlay</h4>
 			    <div class="switch">
 			      <label>
 			        Off
-			        <input type="checkbox" id="switch" checked>
+			        <input type="checkbox" id="switch">
 			        <span class="lever"></span>
 			        On
 			      </label>
-				  
+			 	</div>
 				  <hr>
- 				 <h5>Message Area:</h5>
- 				 <p>(jQuery)</p>
- 				 <p id="messageArea"></p>
+ 				 <h2>Example 4: Messages</h2>
+ 				 <p>This uses the hapyak.message.send() to send data from an iframe annotation to the parent page.</p>
+ 				 <p id="messageArea" style="color:olive;"></p>
 				 <hr>
- 				 <h5>Message Area:</h5>
- 				 <p>(messages)</p>
- 				 <p id="messageArea2"></p>
-			    </div>
-				
-			  </div>
+ 				 <h2>Example 5: Addon</h2>
+ 				 <p>This example uses the hapyak.addon() method. The addon is defined in the JS, and then called from an annotation. This functions similarly to messages, but doesn't require an iframe annotation and can be added to any annotation.</p>
+				 <p>In this example, the time trigger annotation triggers the addon. (It is set to change the text at 5s, 10s, and 15s)</p>
+ 				 <p id="messageArea3" style="color: orange;"></p>
+				 <hr>
+				 <button id="swap" class="waves-effect waves-light btn">Swap video source</button>			  </div>
 		      <div class="col s8">
-				  	<video id="hapyak-player-157199-8825" controls="" class="video-js vjs-default-skin" width="720" height="540" 						playsinline="playsinline">
-					  	<source 							src="//s3.amazonaws.com/hapyak_uploads/group_uploads/4/22404/videos/03475ecf8b554fd0bcf1a4269f38ac51/rick.mp4" 							type="video/mp4">
-				  	</video>
-					<link rel="stylesheet" href="//vjs.zencdn.net/4.8/video-js.css">
-					<script type="text/javascript" src="//vjs.zencdn.net/4.8/video.js"></script> 
-					<script type="text/javascript" src="//d2qrdklrsxowl2.cloudfront.net/js/hapyak.js"></script> 
+				  <div class="pushpin" id="video-area">
+				  <!-- BEGIN VIDEO EMBED: This segment is generated and pasted from HapYak's share menu -->
+				  <video id="hapyak-player-395337-8266" controls class="video-js vjs-default-skin" playsinline="playsinline" width="720" height="540">
+				      <source src="https://s3.amazonaws.com/hapyak_uploads/group_uploads/4/20754/videos/63173f1979f54de7944c545ec812364a/rick.mp4" type="video/mp4"/>
+				  </video>
+				  <link rel="stylesheet" href="//vjs.zencdn.net/4.8/video-js.css">
+				  <script type="text/javascript" src="//vjs.zencdn.net/4.8/video.js"></script>
+
+				  <script type="text/javascript" src="//d2qrdklrsxowl2.cloudfront.net/js/hapyak.js"></script>
+					<!-- NOTE: Link to the separate JS file with the scripts. When generating the code, this function is included, but I moved it
+					into a separate file to make it easier to read and add additional functionality. -->
 					<script type="text/javascript" src="js/custom.js"></script>
+					
+					<!-- END VIDEO EMBED -->
+				</div>
 			  </div>
 
 		 </div>
 	</div>
 </body>
 </html>
+
