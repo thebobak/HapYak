@@ -113,14 +113,6 @@ $(window).ready(function() {
 	     $('#messageArea').text("Messge triggered via hapyak messages: " + obj.data.textMessage);
 	   });
 
-	
-	// I'm pretty sure this is not doing anything //
-	   
-	   
- /* Example 6: Button in video controls text on parent page */
- hapyak.message.addEventListener("bg-color", function (e) {
-     $('body').css("background-color", "olive");
-   });
 	   
 /* Example 5: addon
    
@@ -131,6 +123,8 @@ $(window).ready(function() {
    It receives an object from the annotation that calls it
    
    This example uses HapYak time triggers to send different pieces of text to this addon
+ 
+ 	Note: The addon's name is "time-trigger" and this corresponds to the "addon type" field in a HapYak annotation
    
    */
    
@@ -142,14 +136,17 @@ $(window).ready(function() {
 	 
 	 // Command field from annotation
      "update-text": function (e) { // command-data from annotation object is passed into this function
-       $('#messageArea3').text(e.data.info);
+       $('#messageArea2').text(e.data.info);
      }
    });
 	
 	
-	/* Swap video source - Works...but with some caveats (size/pause/duration)*/
-   $('#swap').click(function() {
-	   document.querySelector("#hapyak-player-157199-8825_html5_api").src = 
+	
+	
+	/* Example 6: Swap video source - Works...but with some caveats (size/pause/duration)*/
+   $('#swapVideoSource').click(function() {
+	   // NOTE: to find the video's element id you might have to go into the page inspector!
+	   document.querySelector("#hapyak-player-395337-8266_html5_api").src = 
    	"//sample.hapyak-hosted.com/group_uploads/23/16673/videos/862f7e32a9b94974b98f004ae49fa9ef/Sample-Video-with-sound.mp4"
 	
    });
@@ -178,7 +175,7 @@ $(window).ready(function() {
 	    },
 		/* Variables and functions to pass to the HapYak player */
 		variables: {
-		        courseName: "Rick 101",
+		        courseName: "Rick 101", // Used in an annotation (Example 8)
 				chordsOverlay: false,
 				lyricsOverlay: false,
 				toggleSwitch: false,
